@@ -52,5 +52,21 @@ class Board
     end
   end
 
-  
+  def valid_pos?(diff, cursor_pos) # diff = [0, -1]  // cursor_pos = [7, 0]
+    diff_1, diff_2 = diff
+    curs_1, curs_2 = cursor_pos
+
+    new_row = diff_1 + curs_1 # 7
+    new_col = diff_2 + curs_2 # -1
+
+    # check new_row and new_col that they are between 0 and 7
+    (0..7).to_a.include?(new_row) && (0..7).to_a.include?(new_col)
+  end
+
+  def our_method
+    # loop
+      cursor.get_input
+      Display.render
+    # loop 
+  end
 end

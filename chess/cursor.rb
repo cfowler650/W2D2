@@ -1,4 +1,5 @@
 require "io/console"
+require_relative "board.rb"
 
 KEYMAP = {
   " " => :space,
@@ -76,8 +77,28 @@ class Cursor
   end
 
   def handle_key(key)
+    case key 
+      #a
+    when :return, :space
+      return @cursor_pos
+
+      #b
+    when :left, :right, :up, :down
+       update_pos(MOVES[key])
+
+      #c
+    when :ctrl_c
+      Process.exit(0)
+    end
   end
 
-  def update_pos(diff)
+  def update_pos(diff) #[0,1]
+    if Board.valid_pos?(diff, @cursor_pos)
+      # update @cursor_pos
+      diff_1, diff_2 = diff
+      curs_1, curs_2 = @cursor_pos
+
+      @cursor_pos = [ (diff_1 + curs_1), (diff_2 + curs_2) ]
+    end
   end
 end
