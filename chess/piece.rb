@@ -7,6 +7,31 @@ class Piece
     @pos = pos # [ 5, 7 ]
   end
 
+  def moves
+    
+  end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   def inspect
     "P"
   end

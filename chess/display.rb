@@ -16,17 +16,18 @@ class Display
       cur_row = ''
       (0..7).each do |col|
         cur = @board[[row, col]]
-        if @cursor.cursor_pos == [row, col]    
-           cur_row += cur.to_s.colorize(:color => :red) + " | "
-        else     
-           cur_row += cur.to_s + " | "
+        
+        if @cursor.cursor_pos == [row, col]
+          cur_row += cur.to_s.colorize(:color => :red) + " | "
+        else
+          cur_row += cur.to_s + " | "
         end
+      end
 
-      end 
       puts '------------------------------'
       puts cur_row
-    end 
-
+    end
+    puts '------------------------------'
   end
 
   # new method player
