@@ -1,8 +1,16 @@
-
+require "singleton"
 require_relative 'piece.rb'
 
 class NullPiece < Piece
-  def initialize(pos)
-    super(pos)
+  include Singleton
+  def initialize
+  end
+
+  def inspect
+    "N"
+  end
+  
+  def to_s
+    "N"
   end
 end

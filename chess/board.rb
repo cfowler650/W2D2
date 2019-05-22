@@ -4,19 +4,21 @@ class Board
 
   def initialize
     @grid = Array.new(8) { Array.new(8) }
+    @singleton = NullPiece.instance
     create_board
-    puts @grid
+    # puts @grid
+
   end
 
   def create_board
     #empty spots
     (2..5).each do |row|
       (0..7).each do |col|
-        @grid[row][col] = NullPiece.new([row, col])
+        @grid[row][col] = @singleton
       end
     end
     
-    #black pieces
+    #black pieces 
     (0..1).each do |row|
       (0..7).each do |col|
         @grid[row][col] = Piece.new([row,col])

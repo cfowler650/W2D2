@@ -12,26 +12,35 @@ class Display
 
   def render  # display the board on a screen
 
-    black_square = "  ".colorize(:background => :black)
-    white_square = "  ".colorize(:background => :white)
-    
-    even_row_pair = white_square + black_square
-    odd_row_pair = black_square + white_square
-
     (0..7).each do |row|
-      if row.zero? || row.even?
-        puts even_row_pair * 4
-      else  
-        puts odd_row_pair * 4
-      end
-    end
-    
+      cur_row = ''
+      (0..7).each do |col|
+        cur = @board[[row, col]]
+        if @cursor.cursor_pos == [row, col]    
+           cur_row += cur.to_s.colorize(:color => :red) + " | "
+        else     
+           cur_row += cur.to_s + " | "
+        end
+
+      end 
+      puts '------------------------------'
+      puts cur_row
+    end 
+
   end
 
   # new method player
-    # loop
-      # render
-      # get cursor
-      # update cursor
+  def player_method
+ 
+      while true
+        render
+        # update cursor
+        @cursor.get_input
+        system("clear")
+      end
+  end
 
 end
+
+nd = Display.new
+nd.player_method
